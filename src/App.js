@@ -12,8 +12,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Portada/>}></Route>
         <Route path="/juego" element={<Juego/>}></Route>
-        <Route path="final/" element={<Final/>}></Route>
-        <Route path="ganado/" element={<Ganado/>}></Route>
+        <Route path="/final" element={<Final/>}></Route>
+        <Route path="/ganado" element={<Ganado/>}></Route>
       </Routes>
     </Provider>
   );
