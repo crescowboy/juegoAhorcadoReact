@@ -1,17 +1,20 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { PALABROS } from '../assets/palabros'
 import { useNavigate } from 'react-router-dom'
+import Contexto from '../contexto/Contexto'
 
 const Juego = () => {
     const letras = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
     const misColores = [{backgroundColor:"white"},{backgroundColor:"green",color:"white"},
     {backgroundColor:"red",color:"white"}]
     const letras_array = letras.split("")
+    const {escribirCorrecta,lacorrecta} = useContext(Contexto);
     const [azar,setAzar] = useState(0);
     const [palabra,setPalabra] = useState([]);
     const [misLetras,setMisLetras] = useState([]);
     const [correctas,setCorrectas] = useState([]);
     const [erroneas,setErroneas] = useState([]);
+    const [imagen,setImagen] = useState(1);
     const navegacion = useNavigate();
     useEffect(()=>{
         setAzar(Math.floor(Math.random()*PALABROS.length))
@@ -19,6 +22,7 @@ const Juego = () => {
     
     useEffect(()=>{
         setPalabra(PALABROS[azar].palabro.split(""))
+        escribirCorrecta(PALABROS[azar].palabro)
     },[azar])
 
     const pulsado = (e)=>{
@@ -28,6 +32,10 @@ const Juego = () => {
         setCorrectas([...correctas,(letra)])
       }else{
         setErroneas([...erroneas,(letra)])
+        setImagen(imagen+1)
+        if(imagen>5){
+          navegacion("/final")
+        }
       }
     }
 
@@ -70,7 +78,9 @@ const Juego = () => {
             ))
           }
       </div>
-      <div className='imagen'></div>
+      <div className='imagen'>
+        <img src={require(`../assets/el_ahorcado${imagen}.png`)} alt=''></img>
+      </div>
     </>
   )
 }
