@@ -3,10 +3,15 @@ import { useNavigate } from 'react-router-dom'
 
 export const Portada = () => {
     const navegacion = useNavigate();
-  return (
-    <>
-    <div>BIENVENIDO</div>
-    <button onClick={()=>navegacion("/juego")}>Jugar</button>
-    </>
-  )
+    return (
+      <>
+        <div className="juego">
+          <div className="bienvenido">BIENVENIDO</div>
+          <button className="botonJugar" onClick={() => navegacion("/juego")}>
+            Jugar
+          </button>
+        </div>
+      </>
+    );
+    
 }

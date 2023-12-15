@@ -12,7 +12,7 @@ const Final = () => {
       <div className='imagen'>
         <img src={require(`../assets/el_ahorcado6.png`)} alt="" />
       </div>
-      <button onClick={()=>navegacion("/juego")}>Volver a juegar</button>
+      <button className='botonJugar' onClick={()=>navegacion("/juego")}>Volver a juegar</button>
     </>
   )
 }
