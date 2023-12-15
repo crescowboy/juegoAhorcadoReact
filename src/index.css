@@ -46,6 +46,10 @@ body {
   background-color: #45a049; /* Color de fondo al pasar el ratón sobre el botón */
 }
 
+.pregunta{
+  font-size: 20px;
+  font-weight: bold;
+}
 
 .palabra{
   display: flex;
